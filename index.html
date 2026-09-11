@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amin Rezaie Mehr</title>
+<meta name="description" content="Software Engineer — systems, infrastructure and Java backend">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231D6F8A'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='IBM Plex Mono,monospace' font-size='18' fill='white'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #F9FAFB;
+    --ink: #16181D;
+    --muted: #6B7484;
+    --rule: #E3E6EB;
+    --accent: #1D6F8A;
+    --sans: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1115; --ink: #E6E8EC; --muted: #9AA3B2; --rule: #262A33; --accent: #5BB3CF;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1115; --ink: #E6E8EC; --muted: #9AA3B2; --rule: #262A33; --accent: #5BB3CF;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    font-feature-settings: "kern", "liga";
+  }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover, a:focus-visible { border-bottom-color: var(--accent); outline: none; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  main { max-width: 680px; margin: 0 auto; padding: 72px 24px 64px; }
+  main > * + * { margin-top: 40px; }
+
+  /* ---- header ---- */
+  header > * + * { margin-top: 10px; }
+  .name-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; column-gap: 16px; }
+  h1 { margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+  .pdf { font-family: var(--mono); font-size: 12px; color: var(--muted); border-bottom-color: transparent; white-space: nowrap; }
+  .pdf:hover { color: var(--accent); }
+  .headline { margin: 0; font-size: 16px; color: var(--ink); }
+  .summary { margin: 0; color: var(--muted); max-width: 60ch; }
+  .contact {
+    margin: 14px 0 0; padding: 0; list-style: none;
+    display: flex; flex-wrap: wrap; gap: 6px 18px;
+    font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+  }
+  .contact a { border-bottom-color: transparent; }
+  .contact a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+  /* ---- sections: label | content ---- */
+  section {
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    gap: 8px 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  section > h2 {
+    grid-column: 1;
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 3px;
+  }
+  section > .body { grid-column: 2; }
+  section > .body > * + * { margin-top: 22px; }
+  @media (max-width: 560px) {
+    main { padding-top: 48px; }
+    main > * + * { margin-top: 32px; }
+    .entry-head { grid-template-columns: 1fr; }
+    section { grid-template-columns: 1fr; gap: 10px; }
+    section > .body { grid-column: 1; }
+  }
+
+  /* ---- entries ---- */
+  .entry > * + * { margin-top: 5px; }
+  .entry-head { display: grid; grid-template-columns: 1fr auto; align-items: baseline; column-gap: 16px; }
+  .entry-head h3 { margin: 0; font-size: 15px; font-weight: 600; }
+  .entry-head .when, .entry-head .org { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .org { color: var(--muted); font-size: 14px; }
+  .entry ul { margin: 2px 0 0; padding-left: 18px; }
+  .entry li { margin: 0; padding-left: 2px; }
+  .entry li::marker { color: var(--accent); }
+  .entry p { margin: 0; }
+  .stack { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .entry li .when { margin-left: 8px; }
+  .contact .avail { color: var(--accent); }
+  .stack span + span::before { content: "·"; margin: 0 7px; color: var(--rule); }
+
+  /* skills: definition rows */
+  .skills { display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; margin: 0; }
+  .skills dt { font-size: 14px; font-weight: 500; white-space: nowrap; }
+  .skills dd { margin: 0; color: var(--muted); }
+
+  footer { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 20px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  /* ---- print: A4, one page, same layout ---- */
+  @page { size: A4; margin: 16mm 18mm 14mm; }
+  @media print {
+    :root { --bg: #FFFFFF; --ink: #111318; --muted: #5C6470; --rule: #D9DDE3; --accent: #1D6F8A; }
+    body { font-size: 10.5pt; line-height: 1.42; }
+    main { max-width: none; padding: 0; }
+    main > * + * { margin-top: 14pt; }
+    h1 { font-size: 20pt; }
+    .headline { font-size: 11.5pt; }
+    .pdf, footer { display: none; }
+    section { padding-top: 11pt; gap: 6pt 16pt; grid-template-columns: 88pt 1fr; }
+    section > .body > * + * { margin-top: 11pt; }
+    .entry > * + * { margin-top: 3pt; }
+    header > * + * { margin-top: 6pt; }
+    .contact { margin-top: 9pt; gap: 3pt 12pt; }
+    .entry-head h3 { font-size: 10.8pt; }
+    a { border-bottom: none; }
+    .contact { font-size: 9pt; }
+    .stack, .entry-head .when { font-size: 8.8pt; }
+    .skills { gap: 4pt 12pt; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    a { transition: border-color .15s, color .15s; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="name-row">
+      <h1>Amin Rezaie Mehr</h1>
+      <a class="pdf" href="cv.pdf" download>cv.pdf ↓</a>
+    </div>
+    <p class="headline">Software Engineer — systems, infrastructure and Java backend</p>
+    <p class="summary">Mathematics student at Amirkabir University of Technology, working part-time as a software engineer on an enterprise privileged-access platform. Half systems and infrastructure, half Java backend; most useful where the two meet.</p>
+    <ul class="contact">
+      <li>Tehran, Iran</li>
+      <li><a href="mailto:amin.rezaiemehr@gmail.com">amin.rezaiemehr@gmail.com</a></li>
+      <li><a href="https://github.com/4m1nr">github.com/4m1nr</a></li>
+      <li class="avail">Open to remote part-time work</li>
+    </ul>
+  </header>
+
+  
+  <section>
+    <h2>Experience</h2>
+    <div class="body">
+      
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Software Engineer</h3>
+          <span class="when">Jul 2024 – present</span>
+        </div>
+        <div class="org">Enterprise software vendor — Privileged access management platform for enterprise customers</div>
+        <ul><li>Java/Spring Boot backend, including the transactional logic.</li><li>Delivery stack — Docker images, Linux ISO builds, system services and updates.</li><li>Deployments, server issues and troubleshooting together with the infrastructure team, on-site when needed.</li><li>Security features and hardening; health checks and self-repair for services.</li></ul>
+      </div>
+      
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Skills</h2>
+    <div class="body">
+      <dl class="skills">
+        <dt>Backend</dt><dd>Java, Spring Boot, Spring Security, JPA / Hibernate, Maven</dd><dt>Systems & infrastructure</dt><dd>Linux, systemd, Docker, Docker Compose, nginx, networking and tunnelling</dd><dt>Data</dt><dd>PostgreSQL, MySQL, Redis; schema design, migrations, transactions and locking</dd><dt>CI/CD</dt><dd>Jenkins, GitLab CI, GitHub Actions</dd><dt>Security</dt><dd>Session recording, credential vaulting, RBAC, audit logging, TLS / PKI, Linux hardening</dd><dt>Other</dt><dd>Go for day-to-day tooling, Python, C, Bash, LaTeX</dd>
+      </dl>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Teaching</h2>
+    <div class="body">
+      
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Teaching Assistant</h3>
+        </div>
+        <div class="org">Amirkabir University of Technology</div>
+        <ul><li>Advanced Programming <span class="when">Winter 2024</span></li><li>Fundamentals of Theory of Computation <span class="when">Fall 2025</span></li></ul>
+      </div>
+      
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Education</h2>
+    <div class="body">
+      
+      <div class="entry">
+        <div class="entry-head">
+          <h3>B.Sc. Mathematics and Applications</h3>
+          <span class="when">Oct 2023 – present</span>
+        </div>
+        <div class="org">Amirkabir University of Technology · GPA 3.6 / 4.0</div>
+      </div>
+      
+    </div>
+  </section>
+  
+
+  <footer>
+    <span>Persian (native) · English (B2)</span>
+    <span>4m1nr.github.io</span>
+  </footer>
+</main>
+</body>
+</html>
